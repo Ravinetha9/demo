@@ -1,0 +1,52 @@
+#%RAML 1.0 DataType
+
+type: object
+properties:
+  recordPaymentTransactionRequest:
+    type: object
+    properties:
+      policyNumber:
+        required: true
+        type: string
+        example: "Policy1001"
+      entityCode:
+        required: true
+        type: string
+        example: "eHealth"
+      language:
+        required: true
+        type: string
+        example: "en/US"
+      transactionAmount:
+        required: true
+        type: string
+        example: "10000"
+      gateway:
+        required: true
+        type: string
+        example: "Visa"
+      cardType:
+        required: true
+        type: string
+        example: "Credit Card"
+      coBrandFlag:
+        required: true
+        type: string
+        example: "N"
+      serviceChargeRate:
+        required: true
+        type: string
+        example: "0.01"
+      netPremiumAmount:
+        required: true
+        type: string
+        example: "10001"
+      returnUrl:
+        required: true
+        type: string
+        example: "https://abc.com"
+      cancelUrl:
+        required: true
+        type: string
+        example: "https://abc.com"
+      

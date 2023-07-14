@@ -1,0 +1,113 @@
+#%RAML 1.0
+title: payment-xpapi-raml
+description: This RAML file contains Process API for payment process. 
+version: 1.0.0
+baseUri: "/api"
+
+securitySchemes:
+  OAuth:
+    type: OAuth 1.0
+
+uses:
+  common-library : /exchange_modules/ff859a3a-0df5-434e-af45-d998d326da5e/common-fragment/1.0.7/common-fragment.raml
+
+/payments:
+  get:
+    description: This API will retrieve payment transaction in VIOC app and store inside transaction DB.
+    is:
+      - common-library.common-header
+      - common-library.error-response
+      - common-library.policynumber-queryParam
+    responses:
+      200:
+        body:
+          application/json:
+            type: object
+            properties:
+              retrievePaymentResponse:
+                required: true
+                type: object
+                properties:
+                  paymentBase:
+                    required: true
+                    type: common-library.retrieve-payment-response
+  /paymentsTransaction:
+    get:
+      description: This API will retrieve payment transaction in VIOC app and store inside transaction DB.
+      is:
+        - common-library.common-header
+        - common-library.error-response
+        - common-library.policynumber-queryParam
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+              properties:
+                retrievePaymentTransactionListResponse:
+                  required: true
+                  type: object
+                  properties:
+                    paymentTransaction:
+                      required: true
+                      type: common-library.retrieve-payment-response
+    post:
+      description: This API will record payment transaction in VIOC app and store initial transaction state as S.
+      is:
+        - common-library.common-header
+        - common-library.datatype-header
+        - common-library.error-response
+      body:
+        application/json:
+          type: common-library.record-payment-request
+      responses:
+        201:
+          body:
+            application/json:
+              type: common-library.record-payment-response
+    patch: 
+      description: This API will record payment transaction in VIOC app and store initial transaction state as S.
+      is:
+        - common-library.common-header
+        - common-library.datatype-header
+        - common-library.error-response          
+      body:
+        application/json:
+          type: common-library.update-payment-request
+      responses:
+        200:
+          body:
+            application/json:
+              type: common-library.update-payment-response
+  /checkouts:
+    post:
+      description: This API will initiated the checkout process in payment gateway.
+      is:
+        - common-library.common-header
+        - common-library.error-response
+        - common-library.datatype-header
+      body:
+        application/json:
+          type: common-library.checkout-request
+      responses:
+        200:
+          body:
+            application/json:
+              type: object
+              properties:
+                checkOutResponse:
+                  required: true
+                  type: common-library.success-response
+
+  /orders:
+    /status:
+      get:
+        is:
+          - common-library.common-header
+          - common-library.error-response
+          - common-library.paymentReferenceId-queryParam
+        responses:
+          200:
+            body:
+              application/json:
+                type: common-library.orderStatus-response

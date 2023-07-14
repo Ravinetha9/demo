@@ -1,0 +1,41 @@
+#%RAML 1.0 DataType
+
+type: array
+items:
+  type: object
+  properties:
+    paymentReferenceId:
+      required: true
+      type: string
+      example: "Paymentjshadjhsdgj"
+    transactionDateTime:
+      required: true
+      type: string
+      example: "2022-11-04T21:21:00"
+    transactionCurrencyCode:
+      required: true
+      type: string
+      example: "USD"
+    transactionAmount:
+      required: true
+      type: string
+      example: "500"
+    transactionStatusCode:
+      required: true
+      type: string
+      example: "P"
+    paymentMethodCode:
+      required: true
+      type: string
+      example: "CASH"
+    netPremiumAmountWithServiceCharge:
+      required: true
+      type: string
+      example: "600"
+    netPremiumAmount:
+      required: true
+      type: string
+      example: "600"
+
+
+

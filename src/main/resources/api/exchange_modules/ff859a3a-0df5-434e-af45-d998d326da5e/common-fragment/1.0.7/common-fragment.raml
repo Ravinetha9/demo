@@ -1,0 +1,19 @@
+#%RAML 1.0 Library
+
+traits:
+  common-header: !include traits/common-headers-trait.raml
+  auth-header: !include traits/authorization-header-trait.raml
+  datatype-header: !include traits/datatype-headers-trait.raml
+  error-response: !include traits/error-response.raml
+  policynumber-queryParam: !include traits/policynumber-queryParam-trait.raml
+  paymentReferenceId-queryParam: !include traits/paymentReferenceId-queryParam-trait.raml
+
+types:
+  record-payment-request: !include datatypes/record-payment-request-dataType.raml
+  record-payment-response: !include datatypes/record-payment-response-dataType.raml
+  update-payment-request: !include datatypes/update-payment-request-dataType.raml
+  update-payment-response: !include datatypes/update-payment-response-dataType.raml
+  retrieve-payment-response: !include datatypes/retrieve-payment-dataType.raml
+  checkout-request: !include datatypes/checkout-request-dataType.raml
+  success-response: !include datatypes/success-response-dataType.raml
+  orderStatus-response: !include datatypes/orderStatus-response-dataType.raml
